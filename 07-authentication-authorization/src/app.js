@@ -2,6 +2,7 @@ const express = require("express");
 const cookieParse = require("cookie-parser");
 
 const authRouter = require("./routes/auth.routes");
+const userRoute = require("./routes/user.routes");
 
 const app = express();
 
@@ -9,6 +10,7 @@ app.use(express.json());
 app.use(cookieParse());
 
 app.use("/api/auth", authRouter);
+app.use("/api/users", userRoute);
 
 app.get("/", (req, res) => {
   res.json({

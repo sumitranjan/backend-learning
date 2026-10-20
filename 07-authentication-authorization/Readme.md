@@ -1,3 +1,19 @@
+## Topics
+
+Registration
+Login
+Password hashing
+JWT authentication
+Access tokens
+Refresh tokens
+Protected routes
+Authentication middleware
+Authorization / roles
+RBAC
+Logout
+Token expiration
+Password reset concepts
+
 ### We're building a Project Management API.
 
 Users:
