@@ -1,5 +1,5 @@
 const User = require("../models/user.model");
-const { generateAccessToken } = require("../utils/jwt");
+const { generateAccessToken, generateRefreshToken } = require("../utils/jwt");
 const { hashPassword, comparePassword } = require("../utils/password");
 
 const registerUser = async (name, email, password) => {
@@ -50,9 +50,11 @@ const loginUser = async ({ email, password }) => {
   }
 
   const accessToken = generateAccessToken(user);
+  const refreshToken = generateRefreshToken(user);
 
   return {
     accessToken,
+    refreshToken,
     user: {
       id: user._id,
       name: user.name,

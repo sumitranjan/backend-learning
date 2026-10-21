@@ -16,11 +16,37 @@ const generateAccessToken = (user) => {
   );
 };
 
+const generateRefreshToken = (user) => {
+  return jwt.sign(
+    { sub: user._id.toString() },
+    process.env.JWT_REFRESH_SECRET,
+    {
+      expiresIn: "7d",
+      issuer: "auth-project",
+      audience: "auth-refresh",
+    },
+  );
+};
+
 const verifyAccessToken = (token) => {
   return jwt.verify(token, process.env.JWT_ACCESS_SECRET, {
+    algorithms: ["HS256"],
     issuer: "auth-project",
     audience: "project-api",
   });
 };
 
-module.exports = { generateAccessToken, verifyAccessToken };
+const verifyRefreshToken = (token) => {
+  return jwt.verify(token, process.env.JWT_REFRESH_SECRET, {
+    algorithms: ["HS256"],
+    issuer: "auth-project",
+    audience: "auth-refresh",
+  });
+};
+
+module.exports = {
+  generateAccessToken,
+  generateRefreshToken,
+  verifyAccessToken,
+  verifyRefreshToken,
+};
