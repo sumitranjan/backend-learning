@@ -1,5 +1,5 @@
 {
-  "name": "07-authentication-authorization",
+  "name": "07-authentication",
   "version": "1.0.0",
   "description": "Users:",
   "main": "server.js",
